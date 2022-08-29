@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/products', [ProductController::class, 'index']);
+Route::post('/products', function(){
+    return Product::create([
+        'name' => 'teste1',
+        'slug' => 'teste1',
+        'description' => 'teste1',
+        'price' => 10.50,
+        
+    ]);
+});
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
